@@ -296,10 +296,24 @@ export default function Home() {
                         }`}
                       >
                         <span className="font-semibold">{to12(slot.start_time)}</span>
-                        <span className="text-xs opacity-75">
-                          {isMySlot ? (isConfirmed ? '✓ Confirmed' : '✓ Booked') : slot.isBreak ? 'Break' : slot.booking ? 'Taken' : 'Open'}
+                        <span className="text-xs opacity-75 truncate max-w-full">
+                          {isMySlot
+                            ? (isConfirmed ? '✓ Confirmed' : '✓ Booked')
+                            : slot.isBreak
+                            ? (slot.breakReason || 'Break')
+                            : slot.booking
+                            ? (user?.role === 'admin' || user?.role === 'super_admin' || user?.role === 'therapist'
+                                ? (slot.booking.user_name || slot.booking.user_email?.split('@')[0] || 'Taken')
+                                : 'Taken')
+                            : 'Open'}
                         </span>
-                        {isMySlot && (
+                        {(isMySlot || slot.booking) && (user?.role === 'admin' || user?.role === 'super_admin' || user?.role === 'therapist') && (
+                          <span className="mt-0.5 flex gap-1">
+                            <CalendarIndicator booking={isMySlot ? myBookingForDate(nextDate) : slot.booking} size="sm" />
+                            <ConfirmationStatusIndicator booking={isMySlot ? myBookingForDate(nextDate) : slot.booking} size="sm" />
+                          </span>
+                        )}
+                        {isMySlot && !(user?.role === 'admin' || user?.role === 'super_admin' || user?.role === 'therapist') && (
                           <span className="mt-1">
                             <CalendarIndicator booking={myBookingForDate(nextDate)} size="sm" />
                           </span>
@@ -357,8 +371,16 @@ export default function Home() {
                                   }`}
                                 >
                                   <span className="font-semibold">{to12(slot.start_time)}</span>
-                                  <span className="opacity-75">
-                                    {isMySlot ? '✓ Mine' : slot.isBreak ? 'Break' : slot.booking ? 'Taken' : 'Open'}
+                                  <span className="opacity-75 truncate max-w-full">
+                                    {isMySlot
+                                      ? '✓ Mine'
+                                      : slot.isBreak
+                                      ? (slot.breakReason || 'Break')
+                                      : slot.booking
+                                      ? (user?.role === 'admin' || user?.role === 'super_admin' || user?.role === 'therapist'
+                                          ? (slot.booking.user_name?.split(' ')[0] || 'Taken')
+                                          : 'Taken')
+                                      : 'Open'}
                                   </span>
                                 </button>
                               );
