@@ -5,12 +5,25 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
-// Add page imports here
+import Layout from './Layout';
+
+import Home from './pages/Home';
+import Book from './pages/Book';
+import MyBookings from './pages/MyBookings';
+import MyProfile from './pages/MyProfile';
+import HowItWorks from './pages/HowItWorks';
+import AdminBookings from './pages/AdminBookings';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminFeedback from './pages/AdminFeedback';
+import AdminSchedule from './pages/AdminSchedule';
+import AdminSettings from './pages/AdminSettings';
+import AdminUsers from './pages/AdminUsers';
+import TherapistClients from './pages/TherapistClients';
+import TherapistView from './pages/TherapistView';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
 
-  // Show loading spinner while checking app public settings or auth
   if (isLoadingPublicSettings || isLoadingAuth) {
     return (
       <div className="fixed inset-0 flex items-center justify-center">
@@ -19,29 +32,37 @@ const AuthenticatedApp = () => {
     );
   }
 
-  // Handle authentication errors
   if (authError) {
     if (authError.type === 'user_not_registered') {
       return <UserNotRegisteredError />;
     } else if (authError.type === 'auth_required') {
-      // Redirect to login automatically
       navigateToLogin();
       return null;
     }
   }
 
-  // Render the main app
   return (
     <Routes>
-      {/* Add your page Route elements here */}
+      <Route path="/" element={<Layout currentPageName="Home"><Home /></Layout>} />
+      <Route path="/Home" element={<Layout currentPageName="Home"><Home /></Layout>} />
+      <Route path="/Book" element={<Layout currentPageName="Book"><Book /></Layout>} />
+      <Route path="/MyBookings" element={<Layout currentPageName="MyBookings"><MyBookings /></Layout>} />
+      <Route path="/MyProfile" element={<Layout currentPageName="MyProfile"><MyProfile /></Layout>} />
+      <Route path="/HowItWorks" element={<Layout currentPageName="HowItWorks"><HowItWorks /></Layout>} />
+      <Route path="/AdminBookings" element={<Layout currentPageName="AdminBookings"><AdminBookings /></Layout>} />
+      <Route path="/AdminDashboard" element={<Layout currentPageName="AdminDashboard"><AdminDashboard /></Layout>} />
+      <Route path="/AdminFeedback" element={<Layout currentPageName="AdminFeedback"><AdminFeedback /></Layout>} />
+      <Route path="/AdminSchedule" element={<Layout currentPageName="AdminSchedule"><AdminSchedule /></Layout>} />
+      <Route path="/AdminSettings" element={<Layout currentPageName="AdminSettings"><AdminSettings /></Layout>} />
+      <Route path="/AdminUsers" element={<Layout currentPageName="AdminUsers"><AdminUsers /></Layout>} />
+      <Route path="/TherapistClients" element={<Layout currentPageName="TherapistClients"><TherapistClients /></Layout>} />
+      <Route path="/TherapistView" element={<Layout currentPageName="TherapistView"><TherapistView /></Layout>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 };
 
-
 function App() {
-
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
