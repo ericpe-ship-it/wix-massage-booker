@@ -23,8 +23,8 @@ export default function Layout({ children, currentPageName }) {
             setUser(currentUser);
             setAuthorized(true);
 
-            // Auto-approve allowed domains and initialize user data
-            if (!currentUser.role || !currentUser.is_active) {
+            // Auto-initialize new users only (no role assigned yet)
+            if (!currentUser.role) {
               await base44.auth.updateMe({
                 role: 'user',
                 is_active: true,
