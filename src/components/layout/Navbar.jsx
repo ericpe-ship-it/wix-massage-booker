@@ -50,12 +50,12 @@ export default function Navbar({ user, onLogout, currentPageName }) {
           {/* Left: Logo card + title block */}
           <Link to="/" className="flex items-center gap-4 flex-shrink-0 group">
             {/* Mini logo card */}
-            <div className="relative w-[72px] h-[48px] rounded-lg bg-[#b8b0f0] overflow-hidden flex-shrink-0 select-none">
+            <div className="relative w-[110px] h-[74px] rounded-xl bg-[#b8b0f0] overflow-hidden flex-shrink-0 select-none">
               {/* Corner labels */}
-              <span className="absolute top-1 left-1.5 text-[6px] font-semibold text-[#2d4a4a] opacity-80 tracking-wide">WIX</span>
-              <span className="absolute top-1 right-1.5 text-[6px] font-semibold text-[#2d4a4a] opacity-80 tracking-wide">NYC</span>
-              <span className="absolute bottom-1 left-1.5 text-[5px] font-medium text-[#2d4a4a] opacity-70 tracking-widest">MAKE</span>
-              <span className="absolute bottom-1 right-1.5 text-[5px] font-medium text-[#2d4a4a] opacity-70 tracking-widest">PRIORITY</span>
+              <span className="absolute top-1.5 left-2 text-[8px] font-semibold text-[#2d4a4a] opacity-80 tracking-wide">WIX</span>
+              <span className="absolute top-1.5 right-2 text-[8px] font-semibold text-[#2d4a4a] opacity-80 tracking-wide">NYC</span>
+              <span className="absolute bottom-1.5 left-2 text-[7px] font-medium text-[#2d4a4a] opacity-70 tracking-widest">MAKE</span>
+              <span className="absolute bottom-1.5 right-2 text-[7px] font-medium text-[#2d4a4a] opacity-70 tracking-widest">PRIORITY</span>
               {/* Teal leaf shape */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <svg viewBox="0 0 72 48" className="w-full h-full" fill="none">
@@ -65,8 +65,8 @@ export default function Navbar({ user, onLogout, currentPageName }) {
               </div>
               {/* "MONTHLY MASSAGES" text overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center leading-none">
-                <span className="text-[8px] font-extrabold text-white tracking-tight drop-shadow">MONTHLY</span>
-                <span className="text-[8px] font-extrabold text-white tracking-tight drop-shadow">MASSAGES</span>
+                <span className="text-[13px] font-extrabold text-white tracking-tight drop-shadow leading-tight">MONTHLY</span>
+                <span className="text-[13px] font-extrabold text-white tracking-tight drop-shadow leading-tight">MASSAGES</span>
               </div>
             </div>
 
