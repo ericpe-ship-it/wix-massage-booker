@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
-import { Menu, X, MapPin, Clock, LogOut, ChevronRight } from 'lucide-react';
+import { Menu, X, MapPin, LogOut, ChevronRight } from 'lucide-react';
 
 const navLinks = [
   { label: 'How It Works', page: 'HowItWorks' },
@@ -47,18 +47,38 @@ export default function Navbar({ user, onLogout, currentPageName }) {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16 gap-6">
 
-          {/* Left: Branding block */}
-          <Link to="/" className="flex-shrink-0 group">
-            <div className="flex items-center gap-1 text-xs text-indigo-500 font-medium mb-0.5">
-              <MapPin className="w-3 h-3" />
-              {config?.location_text || 'Wix Cedar Rapids — Library'}
+          {/* Left: Logo card + title block */}
+          <Link to="/" className="flex items-center gap-4 flex-shrink-0 group">
+            {/* Mini logo card */}
+            <div className="relative w-[72px] h-[48px] rounded-lg bg-[#b8b0f0] overflow-hidden flex-shrink-0 select-none">
+              {/* Corner labels */}
+              <span className="absolute top-1 left-1.5 text-[6px] font-semibold text-[#2d4a4a] opacity-80 tracking-wide">WIX</span>
+              <span className="absolute top-1 right-1.5 text-[6px] font-semibold text-[#2d4a4a] opacity-80 tracking-wide">NYC</span>
+              <span className="absolute bottom-1 left-1.5 text-[5px] font-medium text-[#2d4a4a] opacity-70 tracking-widest">MAKE</span>
+              <span className="absolute bottom-1 right-1.5 text-[5px] font-medium text-[#2d4a4a] opacity-70 tracking-widest">PRIORITY</span>
+              {/* Teal leaf shape */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <svg viewBox="0 0 72 48" className="w-full h-full" fill="none">
+                  <ellipse cx="36" cy="30" rx="18" ry="22" fill="#1e4a4a" transform="rotate(-20 36 30)" />
+                  <ellipse cx="28" cy="20" rx="12" ry="18" fill="#1e4a4a" transform="rotate(15 28 20)" />
+                </svg>
+              </div>
+              {/* "MONTHLY MASSAGES" text overlay */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center leading-none">
+                <span className="text-[8px] font-extrabold text-white tracking-tight drop-shadow">MONTHLY</span>
+                <span className="text-[8px] font-extrabold text-white tracking-tight drop-shadow">MASSAGES</span>
+              </div>
             </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-lg font-bold text-gray-900 leading-none">Chair Massage Schedule</span>
+
+            {/* Title + subtitle */}
+            <div>
+              <div className="flex items-center gap-1 text-xs text-indigo-500 font-medium mb-0.5">
+                <MapPin className="w-3 h-3" />
+                {config?.location_text || 'Wix Cedar Rapids — Library'}
+              </div>
+              <div className="text-lg font-bold text-gray-900 leading-tight">Chair Massage Schedule</div>
+              {subtitle && <div className="text-xs text-gray-400">{subtitle}</div>}
             </div>
-            {subtitle && (
-              <div className="text-xs text-gray-400">{subtitle}</div>
-            )}
           </Link>
 
           {/* Center: Nav links (desktop) */}
