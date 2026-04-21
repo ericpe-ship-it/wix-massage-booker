@@ -67,11 +67,13 @@ export default function AdminBookings() {
         navigate(createPageUrl('Home'));
         return;
       }
-      const allBookings = await base44.entities.Booking.list('-date', 500);
+      const [allBookings, allUsers, dates] = await Promise.all([
+        base44.entities.Booking.list('-date', 500),
+        base44.entities.User.list().catch(() => []),
+        base44.entities.MassageDate.filter({ is_active: true }, 'date').catch(() => []),
+      ]);
       setBookings(allBookings);
-      const allUsers = await base44.entities.User.list();
       setUsers(allUsers);
-      const dates = await base44.entities.MassageDate.filter({ is_active: true }, 'date');
       setMassageDates(dates);
     } catch (error) {
       console.error('Error loading bookings data:', error);

@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "action_type": {
+      "type": "string",
+      "enum": [
+        "schedule_change",
+        "booking_created",
+        "booking_cancelled",
+        "booking_modified",
+        "role_change",
+        "user_added",
+        "settings_change",
+        "exception_added",
+        "exception_removed"
+      ],
+      "description": "Type of admin action"
+    },
+    "admin_email": {
+      "type": "string"
+    },
+    "admin_name": {
+      "type": "string"
+    },
+    "target_user_email": {
+      "type": "string",
+      "description": "User affected by action"
+    },
+    "details": {
+      "type": "string",
+      "description": "JSON string with action details"
+    },
+    "booking_id": {
+      "type": "string"
+    }
+  },
+  "name": "AuditLog",
+  "required": []
+}

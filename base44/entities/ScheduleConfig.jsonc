@@ -1,0 +1,78 @@
+{
+  "name": "ScheduleConfig",
+  "type": "object",
+  "properties": {
+    "working_days": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Days of week (0=Sunday, 1=Monday, etc.)"
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Daily start time (HH:mm format)"
+    },
+    "end_time": {
+      "type": "string",
+      "description": "Daily end time (HH:mm format)"
+    },
+    "slot_duration_minutes": {
+      "type": "number",
+      "description": "Duration of each massage slot"
+    },
+    "buffer_minutes": {
+      "type": "number",
+      "description": "Buffer between sessions"
+    },
+    "max_bookings_per_day": {
+      "type": "number",
+      "description": "Max bookings per employee per day"
+    },
+    "max_bookings_per_week": {
+      "type": "number",
+      "description": "Max bookings per employee per week"
+    },
+    "booking_window_days": {
+      "type": "number",
+      "description": "How many days in advance can book"
+    },
+    "cancellation_cutoff_minutes": {
+      "type": "number",
+      "description": "Minutes before slot that cancellation is allowed without penalty"
+    },
+    "cancellation_policy_text": {
+      "type": "string",
+      "description": "Human-readable cancellation policy displayed to users"
+    },
+    "late_cancel_penalty_enabled": {
+      "type": "boolean",
+      "description": "Whether late cancellations are flagged with a penalty status"
+    },
+    "waitlist_enabled": {
+      "type": "boolean"
+    },
+    "waitlist_offer_minutes": {
+      "type": "number",
+      "description": "Minutes to accept waitlist offer"
+    },
+    "location_text": {
+      "type": "string",
+      "description": "Location shown to employees"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Office timezone"
+    },
+    "reminder_day_before": {
+      "type": "boolean"
+    },
+    "reminder_hour_before": {
+      "type": "boolean"
+    },
+    "is_active": {
+      "type": "boolean"
+    }
+  },
+  "required": []
+}

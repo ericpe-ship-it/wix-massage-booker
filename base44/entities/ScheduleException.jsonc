@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "Date of exception (YYYY-MM-DD)"
+    },
+    "exception_type": {
+      "type": "string",
+      "enum": [
+        "closed",
+        "modified_hours",
+        "break",
+        "blocked"
+      ],
+      "description": "Type of schedule exception"
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Start time for break/blocked/modified (HH:mm)"
+    },
+    "end_time": {
+      "type": "string",
+      "description": "End time for break/blocked/modified (HH:mm)"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Reason for exception"
+    },
+    "is_recurring": {
+      "type": "boolean",
+      "description": "If this is a recurring break (e.g., daily lunch)"
+    },
+    "recurring_days": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Days of week for recurring breaks"
+    }
+  },
+  "name": "ScheduleException",
+  "required": []
+}

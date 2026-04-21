@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "The employee's email this note is about"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string",
+      "description": "Therapist's private note about this person"
+    },
+    "updated_by": {
+      "type": "string",
+      "description": "Therapist who last updated"
+    }
+  },
+  "name": "TherapistNote",
+  "required": [
+    "user_email"
+  ]
+}

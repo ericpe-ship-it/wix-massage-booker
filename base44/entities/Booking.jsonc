@@ -1,0 +1,75 @@
+{
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "User who booked"
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "description": "Booking date (YYYY-MM-DD)"
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Start time (HH:mm)"
+    },
+    "end_time": {
+      "type": "string",
+      "description": "End time (HH:mm)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "booked",
+        "confirmed",
+        "completed",
+        "no_show",
+        "cancelled",
+        "late_cancelled"
+      ],
+      "description": "Booking status. booked=slot reserved, confirmed=day-of attendance confirmed"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional notes from employee"
+    },
+    "feedback_rating": {
+      "type": "number",
+      "description": "1-5 star rating after session"
+    },
+    "feedback_comment": {
+      "type": "string"
+    },
+    "feedback_email_sent": {
+      "type": "boolean",
+      "description": "Whether the post-session feedback email has been sent"
+    },
+    "cancelled_at": {
+      "type": "string",
+      "description": "Timestamp when cancelled"
+    },
+    "booked_by_admin": {
+      "type": "boolean"
+    },
+    "admin_override": {
+      "type": "boolean",
+      "description": "If booking limits were overridden"
+    },
+    "calendar_event_id": {
+      "type": "string",
+      "description": "Google Calendar event ID"
+    },
+    "calendar_accepted": {
+      "type": "boolean",
+      "description": "Whether user accepted the Google Calendar invite"
+    }
+  },
+  "name": "Booking",
+  "required": []
+}

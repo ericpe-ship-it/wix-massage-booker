@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "Date of massage session (YYYY-MM-DD)"
+    },
+    "is_active": {
+      "type": "boolean",
+      "description": "Whether this date is available for booking"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional admin notes for this date"
+    }
+  },
+  "name": "MassageDate",
+  "required": [
+    "date"
+  ]
+}

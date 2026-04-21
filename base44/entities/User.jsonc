@@ -1,0 +1,65 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "user",
+        "super_admin",
+        "therapist"
+      ],
+      "description": "User role in the system"
+    },
+    "no_show_count": {
+      "type": "number",
+      "description": "Count of no-shows"
+    },
+    "late_cancellation_count": {
+      "type": "number",
+      "description": "Count of late cancellations"
+    },
+    "total_bookings": {
+      "type": "number",
+      "description": "Total completed bookings"
+    },
+    "is_active": {
+      "type": "boolean",
+      "description": "If user account is active"
+    },
+    "is_non_wix_user": {
+      "type": "boolean",
+      "description": "If user was manually added (non @wix.com)"
+    },
+    "personal_note": {
+      "type": "string",
+      "description": "User's own note visible to therapists (e.g. preferences, allergies)"
+    },
+    "chime_preference": {
+      "type": "string",
+      "enum": [
+        "bell",
+        "bowl",
+        "chime",
+        "gong",
+        "marimba",
+        "none",
+        "custom"
+      ],
+      "description": "Preferred chime sound played at end of massage slot"
+    },
+    "custom_chime_url": {
+      "type": "string",
+      "description": "URL of user-uploaded custom chime audio file"
+    }
+  },
+  "required": [
+    "role",
+    "no_show_count",
+    "late_cancellation_count",
+    "total_bookings",
+    "is_active",
+    "is_non_wix_user"
+  ]
+}

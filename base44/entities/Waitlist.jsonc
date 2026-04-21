@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "description": "Requested date (YYYY-MM-DD)"
+    },
+    "preferred_time_start": {
+      "type": "string",
+      "description": "Preferred start time (HH:mm)"
+    },
+    "preferred_time_end": {
+      "type": "string",
+      "description": "Preferred end time (HH:mm)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "waiting",
+        "offered",
+        "accepted",
+        "declined",
+        "expired"
+      ],
+      "description": "Waitlist entry status"
+    },
+    "offer_expires_at": {
+      "type": "string",
+      "description": "When the current offer expires"
+    },
+    "offered_slot_start": {
+      "type": "string",
+      "description": "The slot time being offered"
+    },
+    "position": {
+      "type": "number",
+      "description": "Position in queue"
+    }
+  },
+  "name": "Waitlist",
+  "required": []
+}

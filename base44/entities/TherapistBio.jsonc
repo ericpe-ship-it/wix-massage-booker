@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Therapist's display name"
+    },
+    "bio": {
+      "type": "string",
+      "description": "Bio text shown on the landing page"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "URL of the therapist's profile photo"
+    },
+    "title": {
+      "type": "string",
+      "description": "e.g. Licensed Massage Therapist"
+    }
+  },
+  "name": "TherapistBio",
+  "required": []
+}
