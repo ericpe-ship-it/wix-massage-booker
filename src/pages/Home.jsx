@@ -230,31 +230,31 @@ export default function Home() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Left: Therapist Bio */}
         {therapistBio && (
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center">
+          <div className="lg:col-span-1 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center h-fit">
             {therapistBio.photo_url ? (
-              <img src={therapistBio.photo_url} alt={therapistBio.name} className="w-28 h-28 rounded-full object-cover mb-4 border-4 border-indigo-100" />
+              <img src={therapistBio.photo_url} alt={therapistBio.name} className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-indigo-100" />
             ) : (
-              <div className="w-28 h-28 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
-                <User className="w-14 h-14 text-indigo-400" />
+              <div className="w-24 h-24 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
+                <User className="w-12 h-12 text-indigo-400" />
               </div>
             )}
             {therapistBio.name && (
-              <h3 className="text-lg font-semibold text-gray-900">{therapistBio.name}</h3>
+              <h3 className="text-base font-semibold text-gray-900">{therapistBio.name}</h3>
             )}
             {therapistBio.title && (
               <p className="text-sm text-indigo-600 font-medium mt-1">{therapistBio.title}</p>
             )}
             {therapistBio.bio && (
-              <p className="text-sm text-gray-600 mt-3 leading-relaxed">{therapistBio.bio}</p>
+              <p className="text-sm text-gray-600 mt-3 leading-relaxed text-left">{therapistBio.bio}</p>
             )}
           </div>
         )}
 
         {/* Right: Next date slot schedule + date list */}
-        <div className={`${therapistBio ? 'lg:col-span-2' : 'lg:col-span-3'} flex flex-col gap-6`}>
+        <div className={`${therapistBio ? 'lg:col-span-3' : 'lg:col-span-4'} flex flex-col gap-6`}>
           {/* Next massage schedule */}
           {nextDate && nextDateObj && (
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">

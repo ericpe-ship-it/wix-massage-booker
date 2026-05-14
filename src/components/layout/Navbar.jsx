@@ -45,17 +45,17 @@ export default function Navbar({ user, onLogout, currentPageName }) {
     <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
       {/* Main bar */}
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16 gap-6">
+        <div className="flex items-center justify-between h-[90px] gap-6">
 
           {/* Left: Logo card + title block */}
-          <Link to="/" className="flex items-center gap-3 flex-shrink-0 group">
-            {/* Mini logo card - matches published version */}
-            <div className="relative w-[72px] h-[52px] rounded-lg bg-[#b8b0f0] overflow-hidden flex-shrink-0 select-none">
+          <Link to="/" className="flex items-center gap-4 flex-shrink-0 group">
+            {/* Logo card - matches published version */}
+            <div className="relative w-[140px] h-[78px] rounded-xl bg-[#b8b0f0] overflow-hidden flex-shrink-0 select-none">
               {/* Corner labels */}
-              <span className="absolute top-1 left-1.5 text-[7px] font-semibold text-[#2d4a4a] opacity-80 tracking-wide">WIX</span>
-              <span className="absolute top-1 right-1.5 text-[7px] font-semibold text-[#2d4a4a] opacity-80 tracking-wide">NYC</span>
-              <span className="absolute bottom-1 left-1.5 text-[6px] font-medium text-[#2d4a4a] opacity-70 tracking-widest">MAKE</span>
-              <span className="absolute bottom-1 right-1.5 text-[6px] font-medium text-[#2d4a4a] opacity-70 tracking-widest">PRIORITY</span>
+              <span className="absolute top-2 left-2.5 text-[9px] font-semibold text-[#2d4a4a] opacity-80 tracking-wide">WIX</span>
+              <span className="absolute top-2 right-2.5 text-[9px] font-semibold text-[#2d4a4a] opacity-80 tracking-wide">NYC</span>
+              <span className="absolute bottom-2 left-2.5 text-[8px] font-medium text-[#2d4a4a] opacity-70 tracking-widest">MAKE</span>
+              <span className="absolute bottom-2 right-2.5 text-[8px] font-medium text-[#2d4a4a] opacity-70 tracking-widest">PRIORITY</span>
               {/* Teal leaf shape */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <svg viewBox="0 0 72 48" className="w-full h-full" fill="none">
@@ -65,8 +65,8 @@ export default function Navbar({ user, onLogout, currentPageName }) {
               </div>
               {/* "MONTHLY MASSAGES" text overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center leading-none">
-                <span className="text-[11px] font-extrabold text-white tracking-tight drop-shadow leading-tight">MONTHLY</span>
-                <span className="text-[11px] font-extrabold text-white tracking-tight drop-shadow leading-tight">MASSAGES</span>
+                <span className="text-[20px] font-extrabold text-white tracking-tight drop-shadow leading-tight">MONTHLY</span>
+                <span className="text-[20px] font-extrabold text-white tracking-tight drop-shadow leading-tight">MASSAGES</span>
               </div>
             </div>
 
