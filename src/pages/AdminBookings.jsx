@@ -62,8 +62,10 @@ export default function AdminBookings() {
   const loadData = async () => {
     setLoading(true);
     try {
-      const me = await base44.auth.me();
-      if (me.role !== 'admin' && me.role !== 'super_admin') {
+      const mePromise = base44.auth.me();
+      const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Auth timeout')), 8000));
+      const me = await Promise.race([mePromise, timeoutPromise]);
+      if (!me || (me.role !== 'admin' && me.role !== 'super_admin')) {
         navigate(createPageUrl('Home'));
         return;
       }
@@ -77,6 +79,7 @@ export default function AdminBookings() {
       setMassageDates(dates);
     } catch (error) {
       console.error('Error loading bookings data:', error);
+      navigate(createPageUrl('Home'));
     } finally {
       setLoading(false);
     }

@@ -90,6 +90,12 @@ export default function Book() {
       ['booked', 'confirmed'].includes(b.status) && b.date >= format(new Date(), 'yyyy-MM-dd')
     );
 
+    // Global cap: max 2 active bookings at any time
+    if (activeBookings.length >= 2) {
+      setLimitError(`You already have ${activeBookings.length} upcoming booking(s). Maximum 2 active bookings allowed at a time.`);
+      return;
+    }
+
     const dailyBookings = activeBookings.filter(b => b.date === dateStr);
     if (dailyBookings.length >= config.max_bookings_per_day) {
       setLimitError(`You already have a booking on this day. Maximum ${config.max_bookings_per_day} per day.`);
