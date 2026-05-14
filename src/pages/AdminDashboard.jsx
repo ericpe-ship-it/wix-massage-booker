@@ -16,6 +16,7 @@ import { useToast } from "@/components/ui/use-toast";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import TherapistBioEditor from "@/components/admin/TherapistBioEditor";
+import UserBookingStats from "@/components/admin/UserBookingStats";
 
 const roleConfig = {
   user: { label: 'Employee', color: 'bg-gray-100 text-gray-700' },
@@ -318,6 +319,9 @@ export default function AdminDashboard() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* User Booking Reports */}
+      <UserBookingStats />
 
       {/* Role Change Dialog */}
       <Dialog open={roleDialog.open} onOpenChange={(open) => setRoleDialog({ ...roleDialog, open })}>
