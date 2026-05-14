@@ -213,6 +213,9 @@ export default function AdminDashboard() {
         </DialogContent>
       </Dialog>
 
+      {/* User Booking Reports */}
+      <UserBookingStats />
+
       {/* User Management */}
       <Card>
         <CardHeader>
@@ -319,9 +322,6 @@ export default function AdminDashboard() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-
-      {/* User Booking Reports */}
-      <UserBookingStats />
 
       {/* Role Change Dialog */}
       <Dialog open={roleDialog.open} onOpenChange={(open) => setRoleDialog({ ...roleDialog, open })}>
