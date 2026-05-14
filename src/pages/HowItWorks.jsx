@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Calendar, CheckCircle, Clock, Star, Bell } from 'lucide-react';
+import { Calendar, CheckCircle, Clock, Star, Bell, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const steps = [
@@ -59,6 +59,19 @@ export default function HowItWorks() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Booking Limit Notice */}
+      <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-6 flex gap-4">
+        <div className="flex-shrink-0">
+          <Users className="w-7 h-7 text-amber-500 mt-0.5" />
+        </div>
+        <div>
+          <h2 className="text-base font-semibold text-amber-900 mb-1">2-Session Limit Per Employee</h2>
+          <p className="text-amber-800 text-sm leading-relaxed">
+            To give everyone a fair opportunity to enjoy a session, each employee may hold a maximum of <strong>2 upcoming bookings</strong> at any one time. Once one of your sessions is completed or cancelled, you'll be able to book again. Please be mindful of this limit — if you're unable to attend, cancel early so your slot can be offered to someone else.
+          </p>
         </div>
       </div>
 
