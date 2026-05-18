@@ -261,6 +261,26 @@ export default function Book() {
   const handleConfirmBooking = async (notes) => {
     setIsBooking(true);
     const dateStr = format(selectedDate, 'yyyy-MM-dd');
+    const today = format(new Date(), 'yyyy-MM-dd');
+
+    // Re-fetch fresh bookings to enforce limits at submission time
+    const freshUserBookings = await base44.entities.Booking.filter({ user_email: user.email });
+    const freshActive = freshUserBookings.filter(b =>
+      ['booked', 'confirmed'].includes(b.status) && b.date >= today
+    );
+
+    if (freshActive.length >= 2) {
+      toast({
+        title: "Booking limit reached",
+        description: `You already have ${freshActive.length} upcoming booking(s). Maximum 2 active bookings allowed at a time.`,
+        variant: "destructive"
+      });
+      setIsBooking(false);
+      setShowConfirmation(false);
+      setSelectedSlot(null);
+      setUserBookings(freshActive);
+      return;
+    }
 
     const latestBookings = await base44.entities.Booking.filter({ date: dateStr, start_time: selectedSlot.start_time });
     const slotTaken = latestBookings.some(b =>
