@@ -148,6 +148,12 @@ export default function Home() {
   const handleSlotClick = (slot, dateStr) => {
     if (slot.booking || slot.isBreak) return;
     if (myBookingForDate(dateStr)) return;
+    const today = format(new Date(), 'yyyy-MM-dd');
+    const activeCount = myBookings.filter(b => b.date >= today).length;
+    if (activeCount >= 2) {
+      toast({ title: "Booking limit reached", description: "You already have 2 upcoming bookings. Maximum 2 active bookings allowed at a time.", variant: "destructive" });
+      return;
+    }
     setSelectedSlot(slot);
     setSelectedSlotDate(new Date(dateStr + 'T12:00:00'));
     setShowConfirmation(true);
@@ -156,6 +162,26 @@ export default function Home() {
   const handleConfirmBooking = async (notes) => {
     setIsBooking(true);
     const dateStr = format(selectedSlotDate, 'yyyy-MM-dd');
+    const today = format(new Date(), 'yyyy-MM-dd');
+
+    // Re-fetch fresh bookings to enforce 2-booking limit at submission time
+    const freshUserBookings = await base44.entities.Booking.filter({ user_email: user.email });
+    const freshActive = freshUserBookings.filter(b =>
+      ['booked', 'confirmed'].includes(b.status) && b.date >= today
+    );
+
+    if (freshActive.length >= 2) {
+      toast({
+        title: "Booking limit reached",
+        description: `You already have ${freshActive.length} upcoming booking(s). Maximum 2 active bookings allowed at a time.`,
+        variant: "destructive"
+      });
+      setIsBooking(false);
+      setShowConfirmation(false);
+      setSelectedSlot(null);
+      await loadData();
+      return;
+    }
 
     const latestBookings = await base44.entities.Booking.filter({ date: dateStr, start_time: selectedSlot.start_time });
     const slotTaken = latestBookings.some(b =>
